@@ -1,0 +1,50 @@
+name: Part 1 CI/CD Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Validate /docs folder exists
+        run: |
+          if [ -d "docs" ]; then
+            echo "✅ /docs folder exists."
+          else
+            echo " /docs folder is missing!"
+            exit 1
+          fi
+
+      - name: Validate required files in /docs
+        run: |
+          echo "Checking for required files..."
+          
+          if [ -f "docs/RaceDay_ERD.png" ] || [ -f "docs/RaceDay_ERD.pdf" ]; then
+            echo "✅ ERD file found."
+          else
+            echo "❌ ERD file (PNG or PDF) is missing in /docs!"
+            exit 1
+          fi
+
+          if [ -f "docs/API_Endpoint_Plan.md" ] || [ -f "docs/API_Endpoint_Plan.pdf" ]; then
+            echo "✅ API Endpoint Plan found."
+          else
+            echo "❌ API Endpoint Plan is missing in /docs!"
+            exit 1
+          fi
+
+          if [ -f "docs/RaceDay_Schema.sql" ]; then
+            echo "✅ SQL Script found."
+          else
+            echo "❌ SQL Script is missing in /docs!"
+            exit 1
+          fi
+          
+          echo "🎉 All Part 1 required files are present!"
