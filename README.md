@@ -22,3 +22,6 @@ RaceDay is a full-stack web-based event management system designed for the South
 - **Part 1:** System Planning, ERD, API Plan, and SQL Script (Completed).
 - **Part 2:** ASP.NET Core Web API, EF Core, Authentication, and Unit Testing (In Progress).
 - **Part 3:** MVC Frontend, Azure Blob Storage, and Docker Containerization (Planned).
+
+## AI Disclosure
+AI tools were used in the planning and proofreading stages of this project to assist with database design logic, ERD explanation structuring, and code formatting. All core design decisions, SQL scripting, and endpoint planning were executed and verified manually by the student.
